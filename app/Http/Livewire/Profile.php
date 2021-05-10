@@ -3,15 +3,21 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class Profile extends Component
 {
+    public $user_id='';
     public $firstname = '';
     public $lastname = '';
     public $username = '';
     public $avatarUrl = '';
     public $about = '';
 
+    public function mount() 
+    {
+        $this->user_id = auth()->user()->id;
+    }
     public function save()
     {
         $profileData = $this->validate([
