@@ -13,7 +13,7 @@ class Profile extends Component
     public $username = '';
     public $avatarUrl = '';
     public $about = '';
-
+ 
     public function mount() 
     {
         $this->user_id = auth()->user()->id;
