@@ -1,4 +1,4 @@
-<div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+<div class="bg-white py-8  px-4 shadow-2xl border-gray-400 sm:rounded-lg sm:px-10">
     <form wire:submit.prevent="login" action="#" method="POST">
         <div>
             <label for="email" class="block text-sm font-medium leading-5 text-gray-700">

@@ -1,5 +1,5 @@
 
-<div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+<div class="bg-white py-8 px-4 shadow-2xl border-gray-400  sm:rounded-lg sm:px-10">
     <form wire:submit.prevent="register" class="space-y-6" >
         <div>
             <label for="email">email</label>
