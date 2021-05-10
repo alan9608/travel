@@ -14,8 +14,15 @@
     @livewireStyles
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@1.2.3/dist/trix.css">
+    <style>
+        /* .big {
+            background-image:url('/img/big_sea.png');
+            background-size: 1920px 1080px;
+        } */
+    </style>
+
 </head>
-<body class="antialiased font-sans bg-gray-200">
+<body class="big bg-no-repeat bg-top antialiased font-sans">
 
     {{ $slot }}
 

@@ -4405,6 +4405,14 @@ select {
   background-image:linear-gradient(to top left, var(--tw-gradient-stops));
 }
 
+.bg-big_sea {
+  background-image:url('/img/big_sea.png');
+}
+
+.bg-little_sea {
+  background-image:url('/img/little_sea.png');
+}
+
 .from-transparent {
   --tw-gradient-from:transparent;
   --tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -35686,6 +35694,14 @@ select {
     background-image:linear-gradient(to top left, var(--tw-gradient-stops));
   }
 
+  .sm\:bg-big_sea {
+    background-image:url('/img/big_sea.png');
+  }
+
+  .sm\:bg-little_sea {
+    background-image:url('/img/little_sea.png');
+  }
+
   .sm\:from-transparent {
     --tw-gradient-from:transparent;
     --tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -66795,6 +66811,14 @@ select {
 
   .md\:bg-gradient-to-tl {
     background-image:linear-gradient(to top left, var(--tw-gradient-stops));
+  }
+
+  .md\:bg-big_sea {
+    background-image:url('/img/big_sea.png');
+  }
+
+  .md\:bg-little_sea {
+    background-image:url('/img/little_sea.png');
   }
 
   .md\:from-transparent {
@@ -97908,6 +97932,14 @@ select {
     background-image:linear-gradient(to top left, var(--tw-gradient-stops));
   }
 
+  .lg\:bg-big_sea {
+    background-image:url('/img/big_sea.png');
+  }
+
+  .lg\:bg-little_sea {
+    background-image:url('/img/little_sea.png');
+  }
+
   .lg\:from-transparent {
     --tw-gradient-from:transparent;
     --tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -129019,6 +129051,14 @@ select {
     background-image:linear-gradient(to top left, var(--tw-gradient-stops));
   }
 
+  .xl\:bg-big_sea {
+    background-image:url('/img/big_sea.png');
+  }
+
+  .xl\:bg-little_sea {
+    background-image:url('/img/little_sea.png');
+  }
+
   .xl\:from-transparent {
     --tw-gradient-from:transparent;
     --tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -160128,6 +160168,14 @@ select {
 
   .\32xl\:bg-gradient-to-tl {
     background-image:linear-gradient(to top left, var(--tw-gradient-stops));
+  }
+
+  .\32xl\:bg-big_sea {
+    background-image:url('/img/big_sea.png');
+  }
+
+  .\32xl\:bg-little_sea {
+    background-image:url('/img/little_sea.png');
   }
 
   .\32xl\:from-transparent {
