@@ -1,18 +1,21 @@
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {
-        backgroundImage: theme => ({
-            'big_sea': "url('/img/big_sea.png')",
-            'little_sea': "url('/img/little_sea.png')",
-           })
+    mode: 'jit',
+    purge: [
+        './public/**/*.html',
+        './storage/framework/views/*.php',
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './config/*.php',
+        ],
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+        extend: {
+        },
     },
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
+    variants: {
+        extend: {},
+    },
+    plugins: [
+        require('@tailwindcss/forms'),
+    ],
 }

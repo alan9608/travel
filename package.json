@@ -1,8 +1,8 @@
 {
     "private": true,
     "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
+        "dev": "NODE_ENV=development npm run development",
+        "development": "TAILWIND_MODE=build mix",
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
@@ -10,11 +10,12 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@tailwindcss/jit": "^0.1.18",
         "autoprefixer": "^10.2.5",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.2.14",
+        "postcss": "^8.2.15",
         "tailwindcss": "^2.1.2"
     },
     "dependencies": {

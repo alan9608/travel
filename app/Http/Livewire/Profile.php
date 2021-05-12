@@ -13,19 +13,21 @@ class Profile extends Component
     public $username = '';
     public $avatarUrl = '';
     public $about = '';
- 
+
+    private $rules = [
+        'firstname' => 'max:24',
+        'lastname' => 'max:24',
+        'username' => 'max:24',
+        'about' => 'max:140',
+    ];
+  
     public function mount() 
     {
         $this->user_id = auth()->user()->id;
     }
     public function save()
     {
-        $profileData = $this->validate([
-            'firstname' => 'max:24',
-            'lastname' => 'max:24',
-            'username' => 'max:24',
-            'about' => 'max:140',
-        ]);
+        $profileData = $this->validate();
 
         auth()->user()->update($profileData);
     }
