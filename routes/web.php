@@ -21,19 +21,19 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', 'dashboard');
 
 /**
- * 
+ *
  *   App Routes
- * 
+ *
 */
 Route::middleware('auth')->group( function () {
     Route::get('/dashboard',Dashboard::class)->name('dashboard');
-    Route::get('/profile',Profile::class)->name('profile');
+    Route::get('/profile', Profile::class)->name('profile');
 });
 
 /**
-* 
+*
 *   Authentication
-*  
+*
 */
 Route::middleware('guest') ->group( function () {
     Route::get('/register', Register::class)->name('register');

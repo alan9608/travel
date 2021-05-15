@@ -1,6 +1,9 @@
-.alan {border:1px solid green;}
-.alan1 {border:2px solid red;}
-.alan2 {border:3px solid blue;}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.alan {border:1px solid green;}
+.alan1 {border:2px solid red;}
+.alan2 {border:3px solid blue;}
+
+.seapicture {background-image: url("/img/little_sea.png"); }

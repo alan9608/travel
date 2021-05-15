@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
@@ -15,14 +16,17 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@1.2.3/dist/trix.css">
     <style>
-        /* .big {
-            background-image:url('/img/big_sea.png');
+        #mysea {
+            background-image: url("/img/little_sea.png") !important;
+            background-color: lightblue;
+            background-attachment: fixed;
+            background-origin: border-box;
             background-size: 1920px 1080px;
-        } */
+        }
     </style>
-
 </head>
-<body class="big bg-no-repeat bg-top antialiased font-sans">
+
+<body id="mybody" class="antialiased font-sans">
 
     {{ $slot }}
 
@@ -31,4 +35,5 @@
     <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
     <script src="https://unpkg.com/trix@1.2.3/dist/trix.js"></script>
 </body>
+
 </html>
