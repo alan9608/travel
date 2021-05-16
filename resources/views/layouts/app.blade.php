@@ -223,8 +223,8 @@
                             >
 
                                 <!-- Active: "bg-gray-100", Not Active: "" -->
-                                <a href="#" class="active:bg-gray-100 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                                <a href="#" class="active:bg-gray-100 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                                <a href="#" class="active:bg-gray-400 active:text-gray-100 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                                <a href="#" class="active:bg-gray-400 active:text-gray-100 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
                                 @livewire('auth.logout')
                             </div>
                         </div>
@@ -233,18 +233,9 @@
             </div>
 
             <main class="flex-1 relative overflow-y-auto focus:outline-none">
-                <div class="py-6">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                        <h1 class="text-2xl font-semibold text-gray-900">Dashboard</h1>
-                    </div>
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                        <!-- Replace with your content -->
-                        <div class="py-4">
-                            <div class="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
-                        </div>
-                        <!-- /End replace -->
-                    </div>
-                </div>
+
+                {{ $slot }}
+
             </main>
         </div>
     </div>

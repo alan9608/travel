@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@1.2.3/dist/trix.css">
     <style>
-        #mysea {
+        #mysea,#mybody {
             background-image: url("/img/little_sea.png") !important;
             background-color: lightblue;
             background-attachment: fixed;
