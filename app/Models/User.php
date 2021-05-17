@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Profile;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -39,7 +40,16 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'birthday' => 'date',
     ];
+
+    public function avatarUrl()
+    {
+        $gravitar = 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
+        return $this->avatar
+            ? Storage::disk('avatar')->url($this->avatar)
+            : $gravitar;
+    }
 
     public function profile()
     {

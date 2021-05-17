@@ -3,14 +3,18 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 
 class Profile extends Component
 {
+    use WithFileUploads;
+
     public $user_id='';
     public $firstname = '';
     public $lastname = '';
     public $username = '';
+    public $upload = '';
     public $avatarUrl = '';
     public $about = '';
 
@@ -30,8 +34,8 @@ class Profile extends Component
     public function save()
     {
         $profileData = $this->validate();
-
-        auth()->user()->profile()->update($profileData);
+        
+        // auth()->user()->profile()->update($profileData);
         $this->emitSelf('notify-saved');
     }
 
