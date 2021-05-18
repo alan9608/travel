@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Profile;
+use App\Models\Details;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -18,10 +18,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -45,18 +42,10 @@ class User extends Authenticatable
 
     public function avatarUrl()
     {
-        $gravitar = 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
         return $this->avatar
-            ? Storage::disk('avatar')->url($this->avatar)
-            : $gravitar;
+            ? Storage::disk('avatars')->url($this->avatar)
+            : 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
     }
 
-    public function profile()
-    {
-        return $this->hasOne(Profile::class);
-    }
-    public function address()
-    {
-        return $this->hasOne(Address::class);
-    }
+
 }

@@ -20,11 +20,12 @@ class UserSeeder extends Seeder
             'email_verified_at' => NULL,
             'password' => '$2y$10$yyMu0JOYdBwwdcTx0Q7cVO7BTSeiw0V1AHYDB6SiBPpS1yv6GHFpi',
             'remember_token' => NULL,
+            'username' => NULL,
+            'about' => NULL,
+            'avatar' => NULL,
             'created_at' => '2021-05-09 15:52:15',
             'updated_at' => '2021-05-09 15:52:15',
         ]);
-        // INSERT INTO `users` (`id`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-        // (1, 'alan9608@gmail.com', NULL, '$2y$10$yyMu0JOYdBwwdcTx0Q7cVO7BTSeiw0V1AHYDB6SiBPpS1yv6GHFpi', NULL, '2021-05-09 15:52:15', '2021-05-09 15:52:15');
-
+ 
     }
 }

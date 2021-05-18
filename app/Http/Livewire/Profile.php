@@ -4,39 +4,54 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Auth;
 
 class Profile extends Component
 {
     use WithFileUploads;
 
-    public $user_id='';
     public $firstname = '';
     public $lastname = '';
     public $username = '';
-    public $upload = '';
-    public $avatarUrl = '';
+    public $birthday = null;
+    public $upload;
     public $about = '';
 
     protected $rules = [
         'firstname' => 'max:24',
         'lastname' => 'max:24',
-        'username' => 'max:24',
-        'about' => 'max:140',
-        'avatarUrl' => 'max:140'
+        'username' => 'max:14',
+        'birthday' => 'date',
+        'about' => 'max:250',
+        'upload' => 'max:1000'
     ];
+
+    public function save()
+    {
+        $this->validate([
+            'username' => 'max:14|unique:users,username,' . auth()->user()->id,
+            'birthday' => 'date',
+            'about' => 'max:250',
+            'upload' => 'max:1000'
+        ]);
+
+        $filename = $this->upload->store('/', 'avatars');
+
+        auth()->user()->update([
+            'username' => $this->username,
+            'birthday' => $this->birthday,
+            'about' => $this->about,
+            'avatar' => $filename,
+        ]);
+
+        $this->emitSelf('notify-saved');
+    }
+
 
     public function mount()
     {
-        $this->user_id = auth()->user()->id;
-        // $this->firstname = auth()->user()->profile()->firstname;
-    }
-    public function save()
-    {
-        $profileData = $this->validate();
-        
-        // auth()->user()->profile()->update($profileData);
-        $this->emitSelf('notify-saved');
+        $this->username = auth()->user()->username;
+        $this->about = auth()->user()->about;
+        $this->birthday = optional(auth()->user()->birthday)->format('Y/m/d');
     }
 
     public function render()

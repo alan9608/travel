@@ -1,4 +1,4 @@
-<div class="py-6">
+<div class="py-2">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <h1 class="text-2xl font-semibold text-gray-900">Trips</h1>
     </div>
@@ -10,10 +10,10 @@
                     <div class="px-4 py-5 sm:p-6">
                         <x-table>
                             <x-slot name="head">
-                                <x-table.heading sortable>Decription</x-table.heading>
+                                <x-table.heading>Decription</x-table.heading>
                                 <x-table.heading sortable>Date</x-table.heading>
                                 <x-table.heading sortable>Days</x-table.heading>
-                                <x-table.heading >Type</x-table.heading>
+                                <x-table.heading>Type</x-table.heading>
                             </x-slot>
                             <x-slot name="body">
                                 @foreach ($trips as $trip)
