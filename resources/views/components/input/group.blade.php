@@ -5,12 +5,12 @@
     'helpText' => false,
 ])
 
-<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-    <label for="{{ $for }}" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+<div class="py-3 sm:py-3 sm:my-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
+    <label for="{{ $for }}" class="block text font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
         {{ $label }}
     </label>
 
-    <div class="mt-1 sm:mt-0 sm:col-span-2">
+    <div class="my-1 sm:mt-0 sm:col-span-2">
         {{ $slot }}
 
         @if ($error)
@@ -18,7 +18,7 @@
         @endif
 
         @if ($helpText)
-            <p class="mt-2 text-sm text-gray-500">{{ $helpText }}</p>
+            <p class="mt-2 text-xs font-semibold text-gray-500">{{ $helpText }}</p>
         @endif
     </div>
 </div>

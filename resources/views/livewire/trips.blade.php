@@ -14,6 +14,7 @@
                                 <x-table.heading sortable>Date</x-table.heading>
                                 <x-table.heading sortable>Days</x-table.heading>
                                 <x-table.heading>Type</x-table.heading>
+                                <x-table.heading></x-table.heading>
                             </x-slot>
                             <x-slot name="body">
                                 @foreach ($trips as $trip)
@@ -22,6 +23,7 @@
                                     <x-table.cell>{{$trip->date_for_humans}}</x-table.cell>
                                     <x-table.cell>{{$trip->days}}</x-table.cell>
                                     <x-table.cell>{{$trip->type}}</x-table.cell>
+                                    <x-table.cell><x-icon.solid.pencil></x-icon.solid.pencil></x-table.cell>
                                 </x-table.row>
                                 @endforeach
                             </x-slot>

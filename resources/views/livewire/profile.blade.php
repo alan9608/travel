@@ -8,22 +8,38 @@
                 <div class="px-4 py-5 sm:p-6">
 
                     <form wire:submit.prevent="save">
-                        <div class="mt-6 sm:mt-5">
+                        <div class="mt-2 sm:mt-3">
 
                             <x-input.group label="Username" for="username" :error="$errors->first('username')">
-                                <x-input.text wire:model="username" id="username" class="bg-gray-100 rounded-md p-1 " />
+                                <x-input.text wire:model="username" id="username" class="bg-gray-100 rounded-md p-8 " />
                             </x-input.group>
 
                             <x-input.group label="Birthday" for="birthday" :error="$errors->first('birthday')">
                                 <x-input.date wire:model="birthday" id="birthday" placeholder="YYYY/MM/DD" />
                             </x-input.group>
 
-                            <x-input.group label="About" for="about" :error="$errors->first('about')" help-text="Write a few sentances about yourself.">
-                                <x-input.rich-text wire:model.defer="about" id="about" :initial-value="$about" />
+                            <x-input.group label="About" for="about" :error="$errors->first('about')" help-text="Write a few sentences about yourself.">
+                                <x-input.textarea wire:model.defer="about" id="about" :initial-value="$about" />
                             </x-input.group>
 
                             <x-input.group label="Photo" for="photo" :error="$errors->first('upload')">
-                                <x-input.filepond wire:model="upload" />
+                                <div class="flex">
+                                    <!-- this flex box puts the preview inline with the filepond input box -->
+                                    <span class="h-16 w-16 rounded-full overflow-hidden bg-gray-100">
+                                        <!-- This is a preview of the image stored already -->
+                                        @if ($upload)
+                                            <img src="{{ $upload->temporaryUrl() }}" class="h-16" alt="Profile Photo">
+                                        @else
+                                            <!-- user()->avatarUrl is a function in the User Model to show the latset picture -->
+                                            <img src="{{ auth()->user()->avatarUrl() }}" class="h-16" alt="Profile Photo">
+                                        @endif
+                                    </span>
+                                    <!-- end of preview -->
+                                    <div class="w-full">
+                                        <x-input.filepond wire:model="upload" />
+                                    </div>
+
+                                </div>
                             </x-input.group>
 
                         </div>

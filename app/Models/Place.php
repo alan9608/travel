@@ -32,5 +32,12 @@ class Place extends Model
                 'visit_date'
             ]);
     }
-
+    public function getLatitudeAttribute()
+    {
+        return explode(",",$this->coords)[0] ?? '';
+    }
+    public function getLongitudeAttribute()
+    {
+        return explode(",",$this->coords)[1] ?? '';
+    }
 }

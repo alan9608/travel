@@ -33,14 +33,14 @@ class Profile extends Component
             'about' => 'max:250',
             'upload' => 'max:1000'
         ]);
-
-        $filename = $this->upload->store('/', 'avatars');
+        $this->upload &&
+            $filename = $this->upload->store('/', 'avatars');
 
         auth()->user()->update([
             'username' => $this->username,
             'birthday' => $this->birthday,
             'about' => $this->about,
-            'avatar' => $filename,
+            'avatar' => $filename ?? '',
         ]);
 
         $this->emitSelf('notify-saved');
@@ -51,6 +51,7 @@ class Profile extends Component
     {
         $this->username = auth()->user()->username;
         $this->about = auth()->user()->about;
+        $this->upload = auth()->user()->photo;
         $this->birthday = optional(auth()->user()->birthday)->format('Y/m/d');
     }
 

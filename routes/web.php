@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Trips;
+use App\Http\Livewire\Places;
 use App\Http\Livewire\Profile;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Auth\Login;
@@ -29,6 +30,7 @@ Route::redirect('/', 'dashboard');
 Route::middleware('auth')->group( function () {
     Route::get('/dashboard',Dashboard::class)->name('dashboard');
     Route::get('/trips', Trips::class)->name('trips');
+    Route::get('/places', Places::class)->name('places');
     Route::get('/profile', Profile::class)->name('profile');
 });
 
