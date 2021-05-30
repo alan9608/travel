@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
 
     <!-- Tailwind UI -->
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap" rel="stylesheet">
 
     <!-- Alpine -->
@@ -19,19 +19,18 @@
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
     <style>
         #mysea,#mybody {
-            background-image: url("/img/little_sea.png") !important;
+            background-image: url("/img/big_sea.png");
             background-color: lightblue;
             background-attachment: fixed;
             background-origin: border-box;
+            background-position-x:center;
             background-size: 1920px 1080px;
         }
     </style>
 </head>
 
-<body id="mybody" class="antialiased font-sans">
-
+<body class="bg-no-repeat antialiased font-sans" >
     {{ $slot }}
-
     @livewireScripts
     <script src="https://unpkg.com/moment"></script>
     <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>

@@ -1,30 +1,35 @@
 const colors = require('tailwindcss/colors')
 module.exports = {
-    mode: 'jit',
     purge: [
-        './public/**/*.html',
-        './storage/framework/views/*.php',
+        './public/**/*.php',
         './resources/**/*.blade.php',
         './resources/**/*.js',
-        './config/*.php',
+        './app/**/*.php',
         ],
-    darkMode: media, // or 'media' or 'class'
+    darkMode: false, // or 'media' or 'class'
     theme: {
         colors: {
-            gray: colors.coolGray,
-            blue: colors.lightBlue,
+            transparent: 'transparent',
+            current: 'currentColor',
+            black: colors.black,
+            white: colors.white,
+            gray: colors.trueGray,
+            indigo: colors.indigo,
             red: colors.rose,
-            pink: colors.fuchsia,
-          },
-       extend: {
-        spacing: {
-            '128': '32rem',
-            '144': '36rem',
-          },
-          borderRadius: {
-            '4xl': '2rem',
-          }
-       },
+            yellow: colors.amber,
+            teal: colors.teal,
+            blue: colors.blue,
+            lblue: colors.lightBlue,
+            cyan: colors.cyan,
+        },
+        extend: {
+            backgroundImage: theme => (
+                {
+                    'sea': "url('/img/big_sea.png')",
+                    'test': "url('/img/little_sea.png')",
+                }
+            )
+        },
     },
     variants: {
         extend: {},
