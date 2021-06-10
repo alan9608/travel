@@ -27,7 +27,7 @@
                 </span>
             </div>
 
-            <div class=" sm:flex-1 sm:flex sm:items-center sm:justify-between">
+            <!-- <div class=" sm:flex-1 sm:flex sm:items-center sm:justify-between">
                 <div>
                     <p class="text-sm text-gray-700 leading-5 sm:hidden">
                         <span>{!! __('Showing') !!}</span>
@@ -108,7 +108,7 @@
                         </span>
                     </span>
                 </div>
-            </div>
+            </div> -->
         </nav>
     @endif
 </div>

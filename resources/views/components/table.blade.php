@@ -1,5 +1,5 @@
-<div class="align-middle min-w-full overflow-x-auto shadow overflow-hidden sm:rounded-lg">
-    <table class="min-w-full divide-y divide-cool-gray-200">
+<div class="w-full overflow-x-auto shadow sm:rounded-t-lg">
+    <table class="w-full divide-y divide-cool-gray-200 rounded-lg">
         <thead>
             <tr class="bg-gray-100">
 

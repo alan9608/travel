@@ -13,7 +13,7 @@ class Places extends Component
     public function render()
     {
         return view('livewire.places',[
-            'places' => Place::orderBy('name')->paginate(20)
+            'places' => Place::orderBy('name')->paginate(10)
         ]);
     }
 }
