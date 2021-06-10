@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class navbar extends Component
+class navuser extends Component
 {
     /**
      * Create a new component instance.
@@ -13,6 +13,7 @@ class navbar extends Component
      */
     public function __construct()
     {
+        //
     }
 
     /**
@@ -22,6 +23,6 @@ class navbar extends Component
      */
     public function render()
     {
-        return view('components.navbar');
+        return view('components.navuser');
     }
 }

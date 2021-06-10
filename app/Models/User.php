@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Details;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -39,6 +40,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'birthday' => 'date',
     ];
+    public function addUserDetails()
+    {
+        $user = new User;
+        $user->username = 'eawilson';
+        $user->email = 'eawilson@ualberta.ca';
+        $user->password = Hash::make('123456');
+        $user->save();
+
+        $details = new Details;
+        $details->firstname = "Alan";
+        $details->lastname = "Wilson";
+        $details->username = "eawilson";
+        $details->portrait = "9D76n8aWh5luwvpC7Ob7ptMMNv2fyXQqvN3K8TqJ.jpg";
+        $details->birthday = "1950-05-27";
+        $user->details()->save($details);
+
+    }
 
     public function avatarUrl()
     {
@@ -46,6 +64,10 @@ class User extends Authenticatable
             ? Storage::disk('avatars')->url($this->avatar)
             : 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
     }
-
+    public function details()
+    {
+        return $this->hasOne(Details::class);
+    }
+    
 
 }

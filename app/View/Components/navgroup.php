@@ -4,8 +4,19 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class navbar extends Component
+class navgroup extends Component
 {
+    public $menu[
+        trip => [
+            label => 'Trips',
+            uri => '/trips',
+        ],
+        place => [
+            label => 'Places',
+            uri => '/places',
+        ],
+    ];
+
     /**
      * Create a new component instance.
      *
@@ -13,6 +24,7 @@ class navbar extends Component
      */
     public function __construct()
     {
+        
     }
 
     /**
@@ -22,6 +34,6 @@ class navbar extends Component
      */
     public function render()
     {
-        return view('components.navbar');
+        return view('components.navgroup');
     }
 }

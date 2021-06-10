@@ -29,19 +29,28 @@ class Profile extends Component
     {
         $this->validate([
             'username' => 'max:14|unique:users,username,' . auth()->user()->id,
+            'firstname' => 'max:24',
+            'lastname' => 'max:24',
             'birthday' => 'date',
             'about' => 'max:250',
-            'upload' => 'max:1000'
+            'upload' => 'max:1000',
         ]);
         $this->upload &&
             $filename = $this->upload->store('/', 'avatars');
 
-        auth()->user()->update([
-            'username' => $this->username,
-            'birthday' => $this->birthday,
-            'about' => $this->about,
-            'avatar' => $filename ?? '',
-        ]);
+            auth()->user()->update([
+                'username' => $this->username,
+                'birthday' => $this->birthday,
+                'avatar' => $filename ?? '',
+            ]);
+            auth()->user()->details()->update([
+                'firstname' => $this->firstname,
+                'lastname' => $this->lastname,
+                'username' => $this->username,
+                'birthday' => $this->birthday,
+                'about' => $this->about,
+                'portrait' => $filename ?? '',
+            ]);
 
         $this->emitSelf('notify-saved');
     }

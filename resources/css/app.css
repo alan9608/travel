@@ -3,15 +3,28 @@
 @tailwind utilities;
 
 #tcontainer,#pcontainer {background-color: #eee}
-.alan {border:1px solid green;}
-.alan1 {border:1px solid red;}
+.alan1 {border:1px solid green;}
+.alan {border:1px solid red;}
 .alan2 {border:1px solid blue;}
+.alan3 {border:1px solid yellow;}
+.alangreen {border:2px solid green;}
+.alanred {border:2px solid red;}
+.alanblue {border:2px solid blue;}
+.alanyellow {border:2px solid yellow;}
 .sea-image {
-    background-image: url("/img/big_sea.png");
+    background-image: url("/img/thesea-short.png");
     background-color: #cccccc;
-    background-position: center;
-    height:800px;
+    background-position-x:center;
+    height:1080px;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
   }
+  #mysea,#mybody {
+    background-image: url("/img/big_sea.png");
+    background-color: lightblue;
+    background-attachment: fixed;
+    background-origin: border-box;
+    background-position-x:center;
+    background-size: 1920px 1080px;
+}

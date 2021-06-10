@@ -2,7 +2,7 @@
     wire:ignore
     x-data
     x-init="
-    FilePond.registerPlugin(FilePondPluginImagePreview);
+        FilePond.registerPlugin(FilePondPluginImagePreview);
         FilePond.setOptions({
             allowMultiple: {{ isset($attributes['multiple']) ? 'true' : 'false' }},
             server: {

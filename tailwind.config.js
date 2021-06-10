@@ -28,7 +28,10 @@ module.exports = {
                     'sea': "url('/img/big_sea.png')",
                     'test': "url('/img/little_sea.png')",
                 }
-            )
+            ),
+            zIndex: {
+                '-10': '-10',
+            }
         },
     },
     variants: {

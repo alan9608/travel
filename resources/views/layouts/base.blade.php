@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&display=swap" rel="stylesheet">
 
-    <!-- Alpine -->
+    <!-- Alpine JS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
     @livewireStyles
@@ -17,26 +17,18 @@
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@1.2.3/dist/trix.css">
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
-    <style>
-        #mysea,#mybody {
-            background-image: url("/img/big_sea.png");
-            background-color: lightblue;
-            background-attachment: fixed;
-            background-origin: border-box;
-            background-position-x:center;
-            background-size: 1920px 1080px;
-        }
-    </style>
 </head>
 
-<body class="bg-no-repeat antialiased font-sans" >
+<body class="flex flex-col bg-blue-100 -z-10 overflow-hidden bg-cover h-screen" ><!-- Simple background image set below other things -->
+
     {{ $slot }}
+
     @livewireScripts
-    <script src="https://unpkg.com/moment"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
-    <script src="https://unpkg.com/trix@1.2.3/dist/trix.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="https://unpkg.com/moment"></script>  <!-- Required to format Pikaday output -->
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>  <!-- Select a date from a calendar -->
+    <script src="https://unpkg.com/trix@1.2.3/dist/trix.js"></script> <!-- Fancy formatting on a testarea -->
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script> <!-- Upload preview images to the app -->
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script> <!-- Upload images to the app -->
 </body>
 
 </html>

@@ -1,0 +1,23 @@
+/*
+background-attachment: scroll|fixed|local|initial|inherit;
+background-blend-mode: normal|multiply|screen|overlay|darken|lighten|color-dodge|saturation|color|luminosity;
+background-clip: border-box|padding-box|content-box|initial|inherit;
+background-color: color|transparent|initial|inherit;
+background-image: url|none|initial|inherit;
+background-origin: padding-box|border-box|content-box|initial|inherit;
+background-position: value;
+    left top
+    left center
+    left bottom
+    right top
+    right center
+    right bottom
+    center top
+    center center
+    center bottom
+    x% y%
+    xpos ypos
+    initial
+    inherit
+background-repeat: repeat|repeat-x|repeat-y|no-repeat|initial|inherit;
+background-size: auto|length|cover|contain|initial|inherit; */

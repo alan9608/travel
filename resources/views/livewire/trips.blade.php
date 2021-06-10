@@ -2,12 +2,14 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <h1 class="text-2xl font-semibold text-gray-900">Trips</h1>
     </div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <!-- Replace with your content -->
         <div class="py-4">
-            <div class="border-2 border-solid border-gray-300 rounded-lg h-96">
-                <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="border-2 border-solid border-gray-300 rounded-lg">
+                <div id="tcontainer" class="overflow-hidden shadow rounded-lg">
                     <div class="px-4 py-5 sm:p-6">
+
                         <x-table>
                             <x-slot name="head">
                                 <x-table.heading>Decription</x-table.heading>
@@ -28,6 +30,7 @@
                                 @endforeach
                             </x-slot>
                         </x-table>
+
                     </div>
                 </div>
             </div>
