@@ -60,14 +60,15 @@ class User extends Authenticatable
 
     public function avatarUrl()
     {
-        return $this->avatar
-            ? Storage::disk('avatars')->url($this->avatar)
+        $details = Details::where('user_id','=',auth()->user()->id)->first();
+        return $details->portrait
+            ? Storage::disk('avatars')->url($details->portrait)
             : 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
     }
     public function details()
     {
         return $this->hasOne(Details::class);
     }
-    
+
 
 }

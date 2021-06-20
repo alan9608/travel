@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Details;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -12,8 +13,9 @@ class Profile extends Component
     public $firstname = '';
     public $lastname = '';
     public $username = '';
-    public $birthday = null;
+    public $birthday = '';
     public $upload;
+    public $portrait;
     public $about = '';
 
     protected $rules = [
@@ -22,7 +24,7 @@ class Profile extends Component
         'username' => 'max:14',
         'birthday' => 'date',
         'about' => 'max:250',
-        'upload' => 'max:1000'
+        'upload' => 'max:1000|image'
     ];
 
     public function save()
@@ -33,24 +35,22 @@ class Profile extends Component
             'lastname' => 'max:24',
             'birthday' => 'date',
             'about' => 'max:250',
-            'upload' => 'max:1000',
+            'upload' => 'max:1000|image',
+            'portrait' => 'max:1000|image',
         ]);
         $this->upload &&
             $filename = $this->upload->store('/', 'avatars');
 
-            auth()->user()->update([
-                'username' => $this->username,
-                'birthday' => $this->birthday,
-                'avatar' => $filename ?? '',
-            ]);
-            auth()->user()->details()->update([
-                'firstname' => $this->firstname,
-                'lastname' => $this->lastname,
-                'username' => $this->username,
-                'birthday' => $this->birthday,
-                'about' => $this->about,
-                'portrait' => $filename ?? '',
-            ]);
+        auth()->user()->update([
+            'username' => $this->username,
+        ]);
+        auth()->user()->details()->update([
+            'firstname' => $this->firstname,
+            'lastname' => $this->lastname,
+            'birthday' => $this->birthday,
+            'about' => $this->about,
+            'portrait' => $filename ?? $this->portrait,
+        ]);
 
         $this->emitSelf('notify-saved');
     }
@@ -59,9 +59,12 @@ class Profile extends Component
     public function mount()
     {
         $this->username = auth()->user()->username;
-        $this->about = auth()->user()->about;
-        $this->upload = auth()->user()->photo;
-        $this->birthday = optional(auth()->user()->birthday)->format('Y/m/d');
+        $details = Details::where('user_id','=',auth()->user()->id)->first();
+        $this->firstname = $details->firstname;
+        $this->lastname = $details->lastname;
+        $this->birthday = $details->birthday;
+        $this->about = $details->about;
+        $this->portrait = $details->portrait;
     }
 
     public function render()

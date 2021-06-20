@@ -1,6 +1,7 @@
 <x-layouts.base>
-<x-navbar>
-</x-navbar>
+<x-nav.bar>
+    <x-nav.group />
+</x-nav.bar>
 <main class="sea-image -mb-14">
 
     {{ $slot ?? 'X' }}

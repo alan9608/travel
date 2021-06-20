@@ -1,12 +1,12 @@
 <x-layouts.base>
 
-    <x-navbar>
-        <x-navgroup></x-navgroup>
-    </x-navbar>
+    <x-nav.bar>
+        <x-nav.group></x-nav.group>
+    </x-nav.bar>
 
     <div class="h-screen overflow-auto">
 
-        {{ $slot ?? 'X' }}
+        {{ $slot }}
 
     </div>
 

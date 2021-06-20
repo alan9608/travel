@@ -23,6 +23,20 @@ class EarthSize extends Component
     public $ppi=93;
     public $image;
 
+    public function moon_diam()
+    {
+        return $this->units($this->earth_diam * 0.2724);
+    }
+    public function sun_diam()
+    {
+        return $this->units($this->earth_diam * 109.24);
+    }
+    public function units($val) {
+        if($val < 10){return $val . " mm";}
+        if($val < 1000){return $val/100 . " cm";}
+        if($val < 10000){return $val/1000 . " m";}
+        if($val < 1000000){return $val/1000000 . " km";}
+    }
     public function render()
     {
         $this->image = Storage::disk('avatars')->url('kMF6MByve1ahwUF4XPRpHNdjh2Lo8ipA01V1Sdiv.png');

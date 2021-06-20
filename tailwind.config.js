@@ -1,27 +1,14 @@
 const colors = require('tailwindcss/colors')
 module.exports = {
-    purge: [
-        './public/**/*.php',
+    mode:'jit',
+    purge: [                               //CONFIGURE CORRECTLY
+        './storage/framework/views/*.php',
         './resources/**/*.blade.php',
         './resources/**/*.js',
-        './app/**/*.php',
-        ],
-    darkMode: false, // or 'media' or 'class'
+        './config/*.php',
+      ],
+      darkMode: false,
     theme: {
-        colors: {
-            transparent: 'transparent',
-            current: 'currentColor',
-            black: colors.black,
-            white: colors.white,
-            gray: colors.trueGray,
-            indigo: colors.indigo,
-            red: colors.rose,
-            yellow: colors.amber,
-            teal: colors.teal,
-            blue: colors.blue,
-            lblue: colors.lightBlue,
-            cyan: colors.cyan,
-        },
         extend: {
             backgroundImage: theme => (
                 {

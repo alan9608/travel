@@ -24,7 +24,7 @@
                                 </x-input.group>
 
                                 <x-input.group label="Birthday" for="birthday" :error="$errors->first('birthday')">
-                                    <x-input.date wire:model="birthday" id="birthday" placeholder="YYYY/MM/DD" class="w-full bg-gray-100 rounded-md p-2"/>
+                                    <x-input.date wire:model="birthday" id="birthday"  placeholder="YYYY/MM/DD" class="w-full bg-gray-100 rounded-md p-2"/>
                                 </x-input.group>
 
                                 <x-input.group label="About" for="about" :error="$errors->first('about')" help-text="Write a few sentences about yourself.">
@@ -34,13 +34,13 @@
                                 <x-input.group label="Photo" for="photo" :error="$errors->first('upload')">
                                     <div class="flex">
                                         <!-- this flex box puts the preview inline with the filepond input box -->
-                                        <span class="h-16 w-16 rounded-full overflow-hidden bg-gray-100">
+                                        <span class="h-24 w-28 rounded-full overflow-hidden bg-gray-100">
                                             <!-- This is a preview of the image stored already -->
                                             @if ($upload)
-                                                <img src="{{ $upload->temporaryUrl() }}" class="h-16" alt="Profile Photo">
+                                                <img src="{{ $upload->temporaryUrl() }}" class="h-24" alt="Profile Photo">
                                             @else
                                                 <!-- user()->avatarUrl is a function in the User Model to show the latset picture -->
-                                                <img src="{{ auth()->user()->avatarUrl() }}" class="h-16" alt="Profile Photo">
+                                                <img src="{{ auth()->user()->avatarUrl() }}" class="h-24" alt="Profile Photo">
                                             @endif
                                         </span>
                                         <!-- end of preview -->

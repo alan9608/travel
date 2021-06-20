@@ -1,15 +1,10 @@
-<div>
+<div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
-        <h1 class="text-2xl font-semibold text-gray-900">Trips has [{{ $showEditModal }}]</h1>
-    </div>
-
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
-<!-- Replace with your content -->
+        <h1 class="text-2xl font-semibold text-gray-900">Trips</h1>
         <div class="py-4 h-full">
             <div class="bg-gray-100 border-2 border-solid border-gray-300 rounded-lg">
                 <div class="overflow-auto shadow rounded-lg">
                     <div class="px-4 py-5 sm:p-6">
-
                         <x-table>
                             <x-slot name="head">
                                 <x-table.heading>Decription</x-table.heading>
@@ -49,44 +44,12 @@
                             {{ $trips->links() }}
                         </div>
 
+
                     </div>
                 </div>
-                <form wire:submit.prevent="save">
-                    <x-modal.dialog wire:model="showEditModal">
-                        <x-slot name="title">Edit Trip</x-slot>
-
-                        <x-slot name="content">
-
-                            <x-input.group for="description" label="Description" :error="$errors->first('editing.description')">
-                                <x-input.text wire:model="editing.description" id="editing.description" />
-                            </x-input.group>
-
-                            <x-input.group for="start_date" label="Start Date" :error="$errors->first('editing.start_date')">
-                                <x-input.date wire:model="editing.start_date" id="start_date" />
-                            </x-input.group>
-
-                            <x-input.group for="days" label="Days" :error="$errors->first('editing.days')">
-                                <x-input.date wire:model="editing.days" id="days" />
-                            </x-input.group>
-
-                            <x-input.group for="status" label="Status" :error="$errors->first('editing.status')">
-                                <x-input.select wire:model="editing.type" id="type">
-                                    @foreach (App\Models\Trip::TYPES as $value => $label)
-                                    <option value="{{ $value }}">{{ $label }}</option>
-                                    @endforeach
-                                </x-input.select>
-                            </x-input.group>
-
-                        </x-slot>
-
-                        <x-slot name="footer">
-                            <x-button.secondary wire:click="$set('showEditModal', false)">Cancel</x-button.secondary>
-                            <x-button.primary type="submit">Save></x-button.primary>
-                        </x-slot>
-                    </x-modal.dialog>
-                </form>
             </div>
         </div>
-<!-- /End replace -->
     </div>
+    <form wire:submit.prevent="save">
+    </form>
 </div>

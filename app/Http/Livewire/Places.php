@@ -10,6 +10,20 @@ class Places extends Component
 {
     use WithPagination;
 
+    public $showPlaceEditor=false;
+    public Place $editing;
+
+    public function edit(Place $place)
+    {
+        $this->editing = $place;
+        $this->showPlaceEditor = true;
+    }
+
+    public function mount()
+    {
+        $this->editing = Place::find(134);
+    }
+
     public function render()
     {
         return view('livewire.places',[
