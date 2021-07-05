@@ -12,7 +12,7 @@ class Place extends Model
 
     public $timestamps = false;
 
-    public static function search($query)
+    public static function mysearch($query)
     {
         return empty($query) ?
             static::query() :
@@ -36,8 +36,28 @@ class Place extends Model
     {
         return explode(",",$this->coords)[0] ?? '';
     }
+    public function setLatitudeAttribute($val)
+    {
+        if($this->coords) {
+            $ln = explode(',',$this->coords)[1];
+        }
+        else {
+            $ln=0;
+        }
+        return implode(',',array($val,$ln));
+    }
     public function getLongitudeAttribute()
     {
         return explode(",",$this->coords)[1] ?? '';
+    }
+    public function setLongitudeAttribute($val)
+    {
+        if($this->coords) {
+            $la = explode(',',$this->coords)[0];
+        }
+        else {
+            $la=0;
+        }
+        return implode(',',array($la,$val));
     }
 }

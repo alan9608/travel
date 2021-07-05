@@ -16,7 +16,7 @@ class Trips extends Component
     public $showEditModal = false;
     public $editing;
 
-    // protected $queryString = ['sortField','sortDirection'];
+    protected $queryString = ['sortField','sortDirection'];
 
     public function rules()
     {
@@ -28,14 +28,14 @@ class Trips extends Component
         ];
     }
 
-    // public function sortBy($field)
-    // {
-    //     $this->sortDirection = $this->sortField === $field
-    //         ? $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc'
-    //         : 'asc';
+    public function sortBy($field)
+    {
+        $this->sortDirection = $this->sortField === $field
+            ? $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc'
+            : 'asc';
 
-    //     $this->sortField = $field;
-    // }
+        $this->sortField = $field;
+    }
 
     public function edit(Trip $trip)
     {
@@ -46,7 +46,7 @@ class Trips extends Component
     public function render()
     {
         return view('livewire.tripsa',[
-            'trips' => Trip::orderBy('start_date')->paginate(15)
+            'trips' => Trip::orderBy('start_date')->paginate(12)
         ]);
     }
 }

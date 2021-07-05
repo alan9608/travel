@@ -48,45 +48,45 @@
                         <div>
                             {{ $trips->links() }}
                         </div>
-
                     </div>
                 </div>
-                <form wire:submit.prevent="save">
-                    <x-modal.dialog wire:model="showEditModal">
-                        <x-slot name="title">Edit Trip</x-slot>
-
-                        <x-slot name="content">
-
-                            <x-input.group for="description" label="Description" :error="$errors->first('editing.description')">
-                                <x-input.text wire:model="editing.description" id="editing.description" />
-                            </x-input.group>
-
-                            <x-input.group for="start_date" label="Start Date" :error="$errors->first('editing.start_date')">
-                                <x-input.date wire:model="editing.start_date" id="start_date" />
-                            </x-input.group>
-
-                            <x-input.group for="days" label="Days" :error="$errors->first('editing.days')">
-                                <x-input.date wire:model="editing.days" id="days" />
-                            </x-input.group>
-
-                            <x-input.group for="status" label="Status" :error="$errors->first('editing.status')">
-                                <x-input.select wire:model="editing.type" id="type">
-                                    @foreach (App\Models\Trip::TYPES as $value => $label)
-                                    <option value="{{ $value }}">{{ $label }}</option>
-                                    @endforeach
-                                </x-input.select>
-                            </x-input.group>
-
-                        </x-slot>
-
-                        <x-slot name="footer">
-                            <x-button.secondary wire:click="$set('showEditModal', false)">Cancel</x-button.secondary>
-                            <x-button.primary type="submit">Save></x-button.primary>
-                        </x-slot>
-                    </x-modal.dialog>
-                </form>
             </div>
         </div>
 <!-- /End replace -->
     </div>
+    <x-modal.dialog>
+
+        <x-slot name="title">Edit Trip</x-slot>
+
+        <x-slot name="content">
+
+            <form wire:submit.prevent="save">
+
+                <x-input.group for="description" label="Description" :error="$errors->first('editing.description')">
+                    <x-input.text wire:model="editing.description" id="editing.description" />
+                </x-input.group>
+
+                <x-input.group for="start_date" label="Start Date" :error="$errors->first('editing.start_date')">
+                    <x-input.date wire:model="editing.start_date" id="start_date" />
+                </x-input.group>
+
+                <x-input.group for="days" label="Days" :error="$errors->first('editing.days')">
+                    <x-input.date wire:model="editing.days" id="days" />
+                </x-input.group>
+
+                <x-input.group for="status" label="Status" :error="$errors->first('editing.status')">
+                    <x-input.select wire:model="editing.type" id="type">
+                        @foreach (App\Models\Trip::TYPES as $value => $label)
+                        <option value="{{ $value }}">{{ $label }}</option>
+                        @endforeach
+                    </x-input.select>
+                </x-input.group>
+                <x-button.primary type="submit">Save></x-button.primary>
+            </form>
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-button.secondary wire:click="$set('showEditModal', false)">Cancel</x-button.secondary>
+        </x-slot>
+    </x-modal.dialog>
 </div>

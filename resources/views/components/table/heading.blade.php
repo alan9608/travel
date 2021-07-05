@@ -4,7 +4,7 @@
 ])
 
 <th
-    {{ $attributes->merge(['class' => 'px-6 py-3 bg-cool-gray-400'])->only('class') }}
+    {{ $attributes->merge(['class' => 'px-6 py-3 bg-cool-gray-300'])->only('class') }}
 >
 
     @unless ($sortable)

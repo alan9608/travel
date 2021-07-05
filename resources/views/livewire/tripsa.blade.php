@@ -1,4 +1,4 @@
-<div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
+<div>
     <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
         <h1 class="text-2xl font-semibold text-gray-900">Trips</h1>
         <div class="py-4 h-full">
@@ -14,7 +14,7 @@
                                 <x-table.heading></x-table.heading>
                             </x-slot>
                             <x-slot name="body">
-                                @forelse ($trips as $key => $trip)
+                                @foreach ($trips as $trip)
                                 <x-table.row>
                                     <x-table.cell>{{$trip->description}}</x-table.cell>
                                     <x-table.cell>{{$trip->date_for_humans}}</x-table.cell>
@@ -23,27 +23,17 @@
                                     <x-table.cell>
                                         <x-button.link wire:click="edit({{ $trip->id }})">
                                             <span class="flex">
-                                                <x-icon.solid.pencil />Edit
+                                                <x-icon.solid.pencil />
                                             </span>
                                         </x-button.link>
                                     </x-table.cell>
                                 </x-table.row>
-                                @empty
-                                <x-table.row>
-                                    <x-table.cell colspan="5">
-                                        <div class="flex justify-center items-center space-x-2">
-                                            <x-icon.inbox class="h-8 w-8 text-cool-gray-400" />
-                                            <span class="font-medium py-8 text-cool-gray-400 text-xl">No Trips found...</span>
-                                        </div>
-                                    </x-table.cell>
-                                </x-table.row>
-                                @endforelse
+                                @endforeach
                             </x-slot>
                         </x-table>
                         <div>
                             {{ $trips->links() }}
                         </div>
-
 
                     </div>
                 </div>
@@ -51,5 +41,13 @@
         </div>
     </div>
     <form wire:submit.prevent="save">
+        <!-- <x-modal.dialog  wire:model="showEditModal"> -->
+            <!-- <x-slot name='title'>Title</x-slot>
+            <x-slot name='content'></x-slot>
+            <x-slot name='footer'>
+                <x-button.secondary>Cancel</x-button.secondary>
+                <x-button.primary>Save</x-button.primary>
+            </x-slot> -->
+        <!-- </x-modal.dialog> -->
     </form>
 </div>
