@@ -16,7 +16,7 @@ class RegisterTest extends TestCase
     {
         $response = $this->get('/register');
         $response->assertStatus(200);
-    }     
+    }
 
     /** @test */
    function registration_page_contains_livewire_component()
@@ -28,7 +28,7 @@ class RegisterTest extends TestCase
 
     function can_register()
     {
-        $email = 'alan9608@gmail.com';
+        $email = 'eawilson@ualberta.ca';
 
         Livewire::test('auth.register')
             ->set('email',$this->email)
@@ -37,7 +37,7 @@ class RegisterTest extends TestCase
             ->call('register')
             ->assertRedirect('/');
 
-        $this->assertTrue( User::whereEmail($this->email)->exists() );            
+        $this->assertTrue( User::whereEmail($this->email)->exists() );
         $this->assertEquals($this->email, auth()->user()->email);
 
     }

@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
+use App\Models\Place;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -15,21 +16,24 @@ class Trip extends Model
    * @var array
    */
     const TYPES = [
+        0  => 'other',
         1  => 'cruise',
         2  => 'driving',
         3  => 'destination',
         4  => 'tour',
         5  => 'train',
-        10 => 'other'
      ];
 
      public $timestamps = false;
 
     protected $casts = [
-        'start_date' => 'date'
+        'start_date' => 'date',
+        'date_for_humans' => 'date',
+        'date_for_editing' => 'date'
     ];
 
     protected $guarded = [];
+    protected $appends = ['date_for_humans', 'date_for_editing'];
 
     public function places()
     {
@@ -44,41 +48,50 @@ class Trip extends Model
     /**
     * returns the id of a given type
     *
-    * @param string $type  user's type
+    * @param string $type  user's trip type
     * @return int typeID
     */
     public static function getTypeID($type)
     {
-        return array_search($type, self::TYPES);
-    }   /**
+        return array_search($type, self::TYPES) ?? 0;
+    }
+
+    /**
     * get user type
     */
-    public function getTypeAttribute()
+    public function getTypeNameAttribute()
     {
         return self::TYPES[ $this->attributes['type_id'] ];
-    }   /**
+    }
+
+    /**
     * set user type
     */
-    public function setTypeAttribute($value)
+    public function setTypeNameAttribute($value)
     {
-        $typeID = self::getTypeID($value);
-        if ($typeID) {
-            $this->attributes['type_id'] = $typeID;
-        }
+        $this->type_id = self::getTypeID($value) ?? 0;
     }
+
     public function getDateForHumansAttribute()
     {
-        return $this->start_date->format('M, d Y');
+        return $this->start_date->format('M j, Y');
+    }
+
+    public function setDateForHumansAttribute($value)
+    {
+        $this->start_date = Carbon::parse($value);
     }
 
     public function getDateForEditingAttribute()
     {
-        return $this->start_date->format('YYYY/MM/DD');
+        return $this->start_date->format('Y/m/d');
     }
 
     public function setDateForEditingAttribute($value)
     {
-        $this->start_date = Carbon::parse($value);
+        if ($value){
+            $this->start_date = Carbon::parse($value);
+        }
     }
 
 }

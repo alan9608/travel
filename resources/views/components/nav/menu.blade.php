@@ -1,6 +1,6 @@
 <div x-data="{ open: false }" class="lg:pl-0 sm:pl-4"><!-- either words if big enough or hamburger if small -->
 
-    <div class="hidden sm:inline-block h-10 p-2 space-x-4 text-gray-200">
+    <div class="hidden sm:inline-block h-10 p-2 space-x-4 text-gray-600">
     <a href="/trips"><span class="text-lg font-semibold hover:text-white">Trips</span></a>
         <a href="/places"><span class="text-lg font-semibold hover:text-white">Places</span></a>
     </div>
@@ -36,7 +36,7 @@
             >
                 <!-- Active: "bg-gray-100", Not Active: "" -->
                 <li>
-                    <a href="/trips" class="active:bg-gray-900 hover:bg-gray-300 hover:text-black active:text-gray-100 block px-4 py-2 text-sm text-gray-700">Trips</a>
+                    <a href="/trips" class="active:bg-gray-900 hover:bg-gray-500 hover:text-black active:text-gray-600 block px-4 py-2 text-sm text-gray-700">Trips</a>
                 </li>
                 <li>
                     <a href="/places" class="active:bg-gray-900 hover:bg-gray-300 hover:text-black active:text-gray-100 block px-4 py-2 text-sm text-gray-700">Places</a>

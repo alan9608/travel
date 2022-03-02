@@ -1,6 +1,6 @@
 <div>
     <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
-        <h1 class="text-2xl font-semibold text-gray-900">Trips has [{{ $showEditModal }}]</h1>
+        <h1 class="text-2xl font-semibold text-gray-900">Trips has [{{ $showEdit }}]</h1>
     </div>
 
     <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
@@ -86,7 +86,7 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-button.secondary wire:click="$set('showEditModal', false)">Cancel</x-button.secondary>
+            <x-button.secondary wire:click="$set('showEdit', false)">Cancel</x-button.secondary>
         </x-slot>
     </x-modal.dialog>
 </div>

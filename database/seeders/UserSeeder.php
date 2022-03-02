@@ -17,7 +17,6 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'id' => 1 ,
             'email' => 'alan9608@gmail.com',
-            'username' => 'alan9608',
             'email_verified_at' => NULL,
             'password' => '$2y$10$yyMu0JOYdBwwdcTx0Q7cVO7BTSeiw0V1AHYDB6SiBPpS1yv6GHFpi',
             'remember_token' => NULL,

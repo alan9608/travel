@@ -4,9 +4,12 @@
         <h1 class="text-2xl font-semibold text-gray-900">Places</h1>
         <div class="py-4 space-y-4">
 
-            <div>
-                <div class="w-1/4">
+            <div class="flex justify-between">
+            <div class="w-1/4">
                     <x-input.text wire:model="search" placeholder="Search Places..." />
+                </div>
+                <div>
+                    <x-button.primary wire:click="create"><x-icon.plus />New</x-button.primary>
                 </div>
             </div>
 
@@ -15,10 +18,10 @@
                     <div class="px-4 py-5 sm:p-6">
                         <x-table>
                             <x-slot name="head">
-                                <x-table.heading sortable wire:click="sortBy('name')" :direction="$sortField === 'name' ? $sortDirection : null">Name</x-table.heading>
-                                <x-table.heading sortable wire:click="sortBy('country')" :direction="$sortField === 'country' ? $sortDirection : null">Country</x-table.heading>
-                                <x-table.heading sortable wire:click="sortBy('lat')" :direction="$sortField === 'lat' ? $sortDirection : null">Latitude</x-table.heading>
-                                <x-table.heading sortable wire:click="sortBy('lng')" :direction="$sortField === 'lng' ? $sortDirection : null">Longitude</x-table.heading>
+                                <x-table.heading sortable wire:click="sortBy('name')" :direction="$sortField === 'name' ? $sortDirection : null" class="w-1/2">Name</x-table.heading>
+                                <x-table.heading sortable wire:click="sortBy('country')" :direction="$sortField === 'country' ? $sortDirection : null" class="w-1/2">Country</x-table.heading>
+                                <x-table.heading sortable wire:click="sortBy('latitude')" :direction="$sortField === 'latitude' ? $sortDirection : null">Latitude</x-table.heading>
+                                <x-table.heading sortable wire:click="sortBy('longitude')" :direction="$sortField === 'longitude' ? $sortDirection : null">Longitude</x-table.heading>
                                 <x-table.heading></x-table.heading>
                             </x-slot>
                             <x-slot name="body">
@@ -29,9 +32,9 @@
                                         <x-table.cell>{{$place->latitude}}</x-table.cell>
                                         <x-table.cell>{{$place->longitude}}</x-table.cell>
                                         <x-table.cell>
-                                            <x-button.link >
-                                                <span wire:click="edit({{ $place->id }})" class="">
-                                                    <x-icon.solid.pencil class="text-red-900" />
+                                            <x-button.link wire:click="edit({{ $place->id }})">
+                                                <span class="text-xs bg-green-100 text-green-500 rounded px-2 border border-gray-400">
+                                                    edit
                                                 </span>
                                             </x-button.link>
                                         </x-table.cell>
@@ -65,25 +68,25 @@
                 <x-slot name="content">
 
                     <form wire:submit.prevent="save">
-                        <x-input.group label="Name" for="name" :error="$errors->first('name')">
+                        <x-input.group label="Name" for="name" :error="$errors->first('editing.name')">
                             <x-input.text wire:model="editing.name" id="name" />
                         </x-input.group>
-                        <x-input.group label="Country" for="country" :error="$errors->first('country')">
+                        <x-input.group label="Country" for="country" :error="$errors->first('editing.country')">
                             <x-input.text wire:model="editing.country" id="country" />
                         </x-input.group>
-                        <x-input.group label="Latitude" for="lat" :error="$errors->first('lat')">
-                            <x-input.text wire:model="lat" id="lat" />
+                        <x-input.group label="Latitude" for="latitude" :error="$errors->first('editing.latitude')">
+                            <x-input.text wire:model="editing.latitude" id="latitude" />
                         </x-input.group>
-                        <x-input.group label="Longitude" for="lng" :error="$errors->first('lng')">
-                            <x-input.text wire:model="lng" id="lng" />
+                        <x-input.group label="Longitude" for="longitude" :error="$errors->first('editing.longitude')">
+                            <x-input.text wire:model="editing.longitude" id="longitude" />
                         </x-input.group>
                     </form>
 
                 </x-slot>
 
                 <x-slot name="footer">
-                    <x-button.secondary wire:click="handle()">Cancel</x-button.secondary>
-                    <x-button.primary wire:click="save()">Save</x-button.primary>
+                    <x-button.secondary wire:click="$set('showPlaceEditor',false)">Cancel</x-button.secondary>
+                    <x-button.primary wire:click="save">Save</x-button.primary>
                 </x-slot>
 
             </x-modal.dialog>

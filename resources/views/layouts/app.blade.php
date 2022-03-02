@@ -4,7 +4,7 @@
         <x-nav.group></x-nav.group>
     </x-nav.bar>
 
-    <div class="h-screen overflow-auto">
+    <div class="h-screen overflow-auto ">
 
         {{ $slot }}
 

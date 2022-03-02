@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use App\Models\Details;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -37,34 +37,39 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'birthday' => 'date',
+        'email_verified_at' => 'datetime'
     ];
-    public function addUserDetails()
-    {
-        $user = new User;
-        $user->username = 'eawilson';
-        $user->email = 'eawilson@ualberta.ca';
-        $user->password = Hash::make('123456');
-        $user->save();
-
-        $details = new Details;
-        $details->firstname = "Alan";
-        $details->lastname = "Wilson";
-        $details->username = "eawilson";
-        $details->portrait = "9D76n8aWh5luwvpC7Ob7ptMMNv2fyXQqvN3K8TqJ.jpg";
-        $details->birthday = "1950-05-27";
-        $user->details()->save($details);
-
-    }
 
     public function avatarUrl()
     {
-        $details = Details::where('user_id','=',auth()->user()->id)->first();
+        $details = Details::firstOrCreate([
+            'user_id' => auth()->user()->id
+        ]);
+
         return $details->portrait
             ? Storage::disk('avatars')->url($details->portrait)
             : 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
     }
+
+    public function getFirstnameAttribute()
+    {
+        return $this->details()->firstname;
+    }
+    public function getlastnameAttribute()
+    {
+        return $this->details()->lastname;
+    }
+
+    public function getBirthdayForEditingAttribute()
+    {
+        return $this->details()->birthday->format('Y-m-d');
+    }
+
+    public function setBirthdayForEditingAttribute($value)
+    {
+        $this->details()->birthday = Carbon::parse($value);
+    }
+
     public function details()
     {
         return $this->hasOne(Details::class);

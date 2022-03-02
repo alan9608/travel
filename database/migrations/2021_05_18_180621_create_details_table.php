@@ -20,6 +20,7 @@ class CreateDetailsTable extends Migration
                 ->onDelete('cascade');
             $table->string('lastname',50)->nullable();
             $table->string('firstname',50)->nullable();
+            $table->string('username', 15)->unique()->nullable();
             $table->date('birthday')->nullable();
             $table->string('portrait')->nullable();
             $table->string('about',140)->nullable();

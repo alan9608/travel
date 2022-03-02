@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::view('/t', 'layouts.menutop');
-Route::redirect('/', 'dashboard');
+Route::redirect('/', 'dashboard')->name('home');
 
 /**
  *

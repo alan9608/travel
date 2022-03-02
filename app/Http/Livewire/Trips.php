@@ -10,22 +10,67 @@ class Trips extends Component
 {
     use WithPagination;
 
-    public $search='';
-    public $sortField;
+    public $search = '';
+    public $sortField = 'start_date';
     public $sortDirection = 'asc';
-    public $showEditModal = false;
-    public $editing;
+    public $showEdit = false;
+    public Trip $editing;
 
-    protected $queryString = ['sortField','sortDirection'];
+    protected $queryString = ['sortField', 'sortDirection'];
 
     public function rules()
     {
         return [
             'editing.description' => 'required|min:3',
+            'editing.date_for_editing' => 'date',
             'editing.start_date' => 'required|date',
-            'editing.days' => 'required|min:1',
-            // 'editing.type' => 'required|in:'.collect(Trip::TYPES)->keys()->implode(','),
+            'editing.days' => 'required|numeric|min:1',
+            'editing.type_detail' => 'sometimes',
+            'editing.type_id' => 'required|in:' . collect(Trip::TYPES)->keys()->implode(','),
         ];
+    }
+
+    public function edit(Trip $trip)
+    {
+        if($this->editing) {
+            if($this->editing->isNot($trip))
+            {
+                $this->editing = $trip;
+            }
+        }
+        // dd($this->editing);
+        $this->showEdit = true;
+    }
+
+
+    public function makenew()
+    {
+        if (!$this->editing->getKey()) {
+            $this->editing = $this->makeBlankTrip();
+        }
+        $this->showEdit = true;
+    }
+
+    public function save()
+    {
+        $this->validate();
+        if ($this->editing->id) {
+            $this->editing->update();
+        } else {
+            $this->editing->save();
+        }
+        $this->showEdit = false;
+    }
+
+    public function mount()
+    {
+        $this->editing = $this->makeBlankTrip();
+    }
+
+    public function makeBlankTrip()
+    {
+        $tripnew = Trip::make(['start_date' => now(), 'type_id' => 1]);
+        return $tripnew;
     }
 
     public function sortBy($field)
@@ -37,16 +82,10 @@ class Trips extends Component
         $this->sortField = $field;
     }
 
-    public function edit(Trip $trip)
-    {
-        $this->editing = $trip;
-        $this->showEditModal = true;
-    }
-
     public function render()
     {
-        return view('livewire.tripsa',[
-            'trips' => Trip::orderBy('start_date')->paginate(12)
+        return view('livewire.tripsa', [
+            'trips' => Trip::search($this->sortField, $this->search)->orderBy($this->sortField, $this->sortDirection)->paginate(11)
         ]);
     }
 }

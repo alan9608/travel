@@ -17,8 +17,9 @@ class CreatePlacesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('country');
-            $table->string('coords')->nullable();
-            $table->unique('name', 'country');
+            $table->float('latitude',12,6)->default(0.0);
+            $table->float('longitude',12,6)->default(0.0);
+            $table->unique(['name', 'country']);
         });
     }
 

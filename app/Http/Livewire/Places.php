@@ -15,46 +15,47 @@ class Places extends Component
     public $sortField='name';
     public $sortDirection = 'asc';
     public $showPlaceEditor=false;
-
     public Place $editing;
-    public $lat=0;
-    public $lng=0;
 
-   public function rules()
+    protected $queryString = ['sortField','sortDirection'];
+
+    public function rules()
     {
         return [
             'editing.name' => 'required|min:3',
             'editing.country' => 'required|min:3',
-            'lat' => 'numeric',
-            'lng' => 'numeric',
-            // 'editing.type' => 'required|in:'.collect(Trip::TYPES)->keys()->implode(','),
+            'editing.latitude' => 'numeric',
+            'editing.longitude' => 'numeric',
         ];
     }
 
     public function edit(Place $place)
     {
-        $this->editing = $place;
-        $this->lat = explode(',',$place->coords)[0];
-        $this->lng = explode(',',$place->coords)[1];
+        if($this->editing->isNot($place)) $this->editing = $place;
         $this->showPlaceEditor = true;
-        $this->render();
     }
 
-    public function handle()
+    public function create()
     {
-        $this->showPlaceEditor=false;
+        if($this->editing->getKey()) $this->editing = $this->makeBlankPlace();
+        $this->showPlaceEditor=true;
     }
 
     public function save()
     {
         $this->validate();
-        $coords = $this->lat.','.$this->lng;
-        dd($coords);
+        $this->editing->save();
+        $this->showPlaceEditor = false;
     }
 
     public function mount()
     {
-        $this->editing = Place::find(134);
+        $this->editing = $this->makeBlankPlace();
+    }
+
+    public function makeBlankPlace()
+    {
+        return  Place::make();
     }
 
     public function sortBy($field)
@@ -68,9 +69,8 @@ class Places extends Component
 
     public function render()
     {
-        sleep(0.5);
         return view('livewire.places',[
-            'places' => Place::search('name',$this->search)->paginate(10)
+            'places' => Place::search($this->sortField,$this->search)->orderBy($this->sortField, $this->sortDirection)->paginate(10)
         ]);
     }
 }

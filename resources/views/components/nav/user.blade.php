@@ -3,7 +3,7 @@
         display: none !important;
     }
 </style>
-<div x-data="{ open: false }" class="" >
+<div x-data="{ open: false }" >
     <div class="lg:pr-0 z-60 relative  pr-4 mt-1 mr-2 ">
         <button
             x-on:click="open = true"

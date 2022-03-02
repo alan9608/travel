@@ -19,7 +19,7 @@ class CreateTripsTable extends Migration
             $table->string('type_detail', 100)->nullable();
             $table->date('start_date')->unique();
             $table->string('description');
-            $table->integer('days')->default(1);
+            $table->integer('days')->default(0);
         });
     }
 

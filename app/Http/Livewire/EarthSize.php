@@ -42,6 +42,7 @@ class EarthSize extends Component
         $this->image = Storage::disk('avatars')->url('kMF6MByve1ahwUF4XPRpHNdjh2Lo8ipA01V1Sdiv.png');
         return view('livewire.earth-size');
     }
+    
     public function calculate()
     {
         $this->sun_diam = $this->sun_diam*$this->earth_diam;

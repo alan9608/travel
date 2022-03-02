@@ -12,6 +12,9 @@ class Place extends Model
 
     public $timestamps = false;
 
+    protected $guarded = [];
+
+
     public static function mysearch($query)
     {
         return empty($query) ?
@@ -31,33 +34,5 @@ class Place extends Model
                 'place_id',
                 'visit_date'
             ]);
-    }
-    public function getLatitudeAttribute()
-    {
-        return explode(",",$this->coords)[0] ?? '';
-    }
-    public function setLatitudeAttribute($val)
-    {
-        if($this->coords) {
-            $ln = explode(',',$this->coords)[1];
-        }
-        else {
-            $ln=0;
-        }
-        return implode(',',array($val,$ln));
-    }
-    public function getLongitudeAttribute()
-    {
-        return explode(",",$this->coords)[1] ?? '';
-    }
-    public function setLongitudeAttribute($val)
-    {
-        if($this->coords) {
-            $la = explode(',',$this->coords)[0];
-        }
-        else {
-            $la=0;
-        }
-        return implode(',',array($la,$val));
     }
 }

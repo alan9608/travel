@@ -2,10 +2,9 @@ const colors = require('tailwindcss/colors')
 module.exports = {
     mode:'jit',
     purge: [                               //CONFIGURE CORRECTLY
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
-        './resources/**/*.blade.php',
-        './resources/**/*.js',
-        './config/*.php',
+        './resources/views/**/*.blade.php',
       ],
       darkMode: false,
     theme: {
@@ -18,6 +17,10 @@ module.exports = {
             ),
             zIndex: {
                 '-10': '-10',
+            },
+            colors: {
+                'cool-gray': colors.coolGray,
+                'indigo': colors.indigo
             }
         },
     },

@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Details;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Carbon;
 
 class Profile extends Component
 {
@@ -18,39 +19,29 @@ class Profile extends Component
     public $portrait;
     public $about = '';
 
-    protected $rules = [
-        'firstname' => 'max:24',
-        'lastname' => 'max:24',
-        'username' => 'max:14',
-        'birthday' => 'date',
-        'about' => 'max:250',
-        'upload' => 'max:1000|image'
-    ];
-
     public function save()
     {
-        $this->validate([
+        $details = $this->validate([
             'username' => 'max:14|unique:users,username,' . auth()->user()->id,
-            'firstname' => 'max:24',
-            'lastname' => 'max:24',
+            'upload' => 'max:5000',
+            'username' => 'max:14',
             'birthday' => 'date',
             'about' => 'max:250',
-            'upload' => 'max:1000|image',
-            'portrait' => 'max:1000|image',
+            'portrait' => 'sometimes',
         ]);
         $this->upload &&
             $filename = $this->upload->store('/', 'avatars');
 
-        auth()->user()->update([
-            'username' => $this->username,
-        ]);
-        auth()->user()->details()->update([
-            'firstname' => $this->firstname,
-            'lastname' => $this->lastname,
-            'birthday' => $this->birthday,
-            'about' => $this->about,
-            'portrait' => $filename ?? $this->portrait,
-        ]);
+        $fields = Details::where('user_id',auth()->user()->id)->first()->update($details);
+
+        // auth()->user()->details()->update([
+        //     'firstname' => $this->firstname,
+        //     'lastname'  => $this->lastname,
+        //     'username'  => $this->username,
+        //     'birthday'  => $this->birthday,
+        //     'about'     => $this->about,
+        //     'portrait'  => $filename ?? $this->portrait,
+        // ]);
 
         $this->emitSelf('notify-saved');
     }
@@ -58,13 +49,13 @@ class Profile extends Component
 
     public function mount()
     {
-        $this->username = auth()->user()->username;
-        $details = Details::where('user_id','=',auth()->user()->id)->first();
-        $this->firstname = $details->firstname;
-        $this->lastname = $details->lastname;
-        $this->birthday = $details->birthday;
-        $this->about = $details->about;
-        $this->portrait = $details->portrait;
+        $details = Details::firstOrCreate(['user_id' => auth()->user()->id]);
+        $this->firstname    = $details->firstname;
+        $this->lastname     = $details->lastname;
+        $this->username     = $details->username;
+        $this->birthday     = $details->birthday;
+        $this->about        = $details->about;
+        $this->portrait     = $details->portrait;
     }
 
     public function render()

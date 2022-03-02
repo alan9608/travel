@@ -15,7 +15,7 @@ class TripSeeder extends Seeder
     public function run()
     {
         DB::table('trips')->insert([
-            [  
+            [
               // 1
               'type_detail' => 'Azamara Journey',
               'start_date' => '2010-11-29',
@@ -141,6 +141,12 @@ class TripSeeder extends Seeder
               'start_date' => '2019-04-14',
               'days' => 13,
               'description' => 'Japan Intensive'
+            ],
+            [
+                'type_detail' => 'Azamara Quest',
+                'start_date' => '2021-01-04',
+                'days' => 23,
+                'description' => 'Sailed the Pacific Ocean'
             ]
           ]);
     }

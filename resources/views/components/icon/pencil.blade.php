@@ -1,5 +1,5 @@
 <!-- Heroicon name: pencil -->
-<svg {{ $attributes->merge(['class' => 'flex-shrink-0 h-6 w-6 transition ease-in-out duration-150']) }}
+<svg {{ $attributes->merge(['class' => 'flex-shrink-0 h-4 w-4 transition ease-in-out duration-150']) }}
     viewBox="0 0 24 24"
     stroke="currentColor">
   <path
