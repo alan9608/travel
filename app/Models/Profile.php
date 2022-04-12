@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Details extends Model
+class Profile extends Model
 {
     use HasFactory;
 
@@ -19,7 +19,7 @@ class Details extends Model
         'birthday' => 'date',
     ];
 
-    public function addUserDetails()
+    public function addUserProfile()
     {
         $user = new User;
         $user->username = 'eawilson';
@@ -27,7 +27,7 @@ class Details extends Model
         $user->password = Hash::make('password');
         $user->save();
 
-        $details = new Details;
+        $details = new Profile;
         $details->firstname = "Alan";
         $details->lastname = "Wilson";
         $details->username = "eawilson";

@@ -5,9 +5,7 @@
         </div>
 
         <div class="mt-6 sm:mx-auto sm:w-full sm:max-w-md shadow-lg ">
-            <div class="bg-white py-8 px-4 sm:rounded-lg sm:px-10  shadow-lg ">
                 {{ $slot }}
-            </div>
         </div>
     </div>
 </x-layouts.base>

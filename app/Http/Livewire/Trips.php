@@ -20,7 +20,7 @@ class Trips extends Component
 
     public function rules()
     {
-        return [
+        $checked = [
             'editing.description' => 'required|min:3',
             'editing.date_for_editing' => 'date',
             'editing.start_date' => 'required|date',
@@ -28,6 +28,7 @@ class Trips extends Component
             'editing.type_detail' => 'sometimes',
             'editing.type_id' => 'required|in:' . collect(Trip::TYPES)->keys()->implode(','),
         ];
+        return  $checked;
     }
 
     public function edit(Trip $trip)
@@ -35,10 +36,13 @@ class Trips extends Component
         if($this->editing) {
             if($this->editing->isNot($trip))
             {
+                dd($trip);
                 $this->editing = $trip;
             }
         }
-        // dd($this->editing);
+        else {
+            $this->editing = $trip;
+        }
         $this->showEdit = true;
     }
 

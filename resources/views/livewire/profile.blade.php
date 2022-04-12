@@ -23,8 +23,8 @@
                                     <x-input.text wire:model="username" id="username" class="bg-gray-100 rounded-md p-2 " />
                                 </x-input.group>
 
-                                <x-input.group label="Birthday" for="birthday" :error="$errors->first('birthday')">
-                                    <x-input.date wire:model.lazy="birthday" id="birthday"  placeholder="YYYY-MM-DD" class="w-full bg-gray-100 rounded-md p-2"/>
+                                <x-input.group label="Birthday" for="birthday_for_editing" :error="$errors->first('birthday-for-editing')">
+                                    <x-input.date wire:model.lazy="birthday_for_editing" id="birthday-for-editing"  placeholder="YYYY-MM-DD" class="w-full bg-gray-100 rounded-md p-2"/>
                                 </x-input.group>
 
                                 <x-input.group label="About" for="about" :error="$errors->first('about')" help-text="Write a few sentences about yourself.">

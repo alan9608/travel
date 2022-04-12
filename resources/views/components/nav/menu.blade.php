@@ -7,7 +7,7 @@
 
     <div class="inline-block sm:hidden">
         <button @click="open = !open" x-cloak  type="button"
-            class="text-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 ">
+            class="text-gray-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 ">
             <span class="sr-only">Open sidebar</span>
             <!-- Heroicon name: outline/menu-alt-2 -->
             <svg class="h-8 pt-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

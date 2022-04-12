@@ -1,7 +1,7 @@
 <div
     x-data="{ value: @entangle($attributes->wire('model')), picker: undefined }"
-    x-init="new Pikaday({ field: $refs.input, format: 'YYYY-MM-DD' })"
-    x-on:change="$dispatch('input', $event.target.value)"
+    x-init="new Pikaday({ field: $refs.dateinput, format: 'YYYY-MM-DD' })"
+    x-on:change="value=$event.target.value"
     class="flex rounded-md shadow-sm "
 >
     <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-50 text-gray-500 sm:text-sm">
@@ -12,16 +12,8 @@
 
     <input
         {{ $attributes->whereDoesntStartWith('wire:model') }}
-        x-ref="input"
+        x-ref="dateinput"
         x-bind:value="value"
         class="rounded-none rounded-r-md flex-1 form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
     />
 </div>
-
-<!-- @push('styles')
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
-@endpush -->
-
-<!-- @push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
-@endpush -->

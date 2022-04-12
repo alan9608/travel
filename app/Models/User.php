@@ -42,37 +42,37 @@ class User extends Authenticatable
 
     public function avatarUrl()
     {
-        $details = Details::firstOrCreate([
+        $profile = Profile::firstOrCreate([
             'user_id' => auth()->user()->id
         ]);
 
-        return $details->portrait
-            ? Storage::disk('avatars')->url($details->portrait)
+        return $profile->portrait
+            ? Storage::disk('avatars')->url($profile->portrait)
             : 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
     }
 
     public function getFirstnameAttribute()
     {
-        return $this->details()->firstname;
+        return $this->profile()->firstname;
     }
     public function getlastnameAttribute()
     {
-        return $this->details()->lastname;
+        return $this->profile()->lastname;
     }
 
     public function getBirthdayForEditingAttribute()
     {
-        return $this->details()->birthday->format('Y-m-d');
+        return $this->profile()->birthday->format('Y-m-d');
     }
 
     public function setBirthdayForEditingAttribute($value)
     {
-        $this->details()->birthday = Carbon::parse($value);
+        $this->profile()->birthday = Carbon::parse($value);
     }
 
-    public function details()
+    public function profile()
     {
-        return $this->hasOne(Details::class);
+        return $this->hasOne(Profile::class);
     }
 
 

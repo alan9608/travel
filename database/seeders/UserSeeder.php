@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'id' => 1 ,
             'email' => 'alan9608@gmail.com',
             'email_verified_at' => NULL,
-            'password' => '$2y$10$yyMu0JOYdBwwdcTx0Q7cVO7BTSeiw0V1AHYDB6SiBPpS1yv6GHFpi',
+            'password' => '$2y$10$j2h9E2fWQxPApBKi2IAunOCVQ.LJnFqEPlJ0rMHVYO5uT7MnekySi', //=password
             'remember_token' => NULL,
             'created_at' => '2021-05-09 15:52:15',
             'updated_at' => '2021-05-09 15:52:15',
