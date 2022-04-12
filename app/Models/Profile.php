@@ -3,7 +3,11 @@
 namespace App\Models;
 
 use App\Models\User;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Hash;
+=======
+use Illuminate\Support\Carbon;
+>>>>>>> c0afbca72cf456c1bf90fa3291ade101b36dbf93
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -19,6 +23,7 @@ class Profile extends Model
         'birthday' => 'date',
     ];
 
+<<<<<<< HEAD
     public function addUserProfile()
     {
         $user = new User;
@@ -35,6 +40,16 @@ class Profile extends Model
         $details->birthday = "1950-05-27";
         $user->details()->save($details);
 
+=======
+    public function getDateForEditingAttribute()
+    {
+        return $this->birthday->format('Y-m-d');
+    }
+
+    public function setDateForEditingAttribute($value)
+    {
+        $this->birthday = Carbon::parse($value);
+>>>>>>> c0afbca72cf456c1bf90fa3291ade101b36dbf93
     }
 
     public function user()
