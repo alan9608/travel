@@ -5,9 +5,15 @@
         <a href="/places"><span class="text-lg font-semibold hover:text-white">Places</span></a>
     </div>
 
+<<<<<<< HEAD
     <div class="block sm:hidden">
         <button x-show="open" @click="open = !open" x-cloak  type="button"
             class="text-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 ">
+=======
+    <div class="inline-block sm:hidden">
+        <button @click="open = !open" x-cloak  type="button"
+            class="text-gray-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 ">
+>>>>>>> 3e30e82e42b4bda1209e5770d926a8daec96e533
             <span class="sr-only">Open sidebar</span>
             <!-- Heroicon name: outline/menu-alt-2 -->
             <svg class="h-8 pt-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

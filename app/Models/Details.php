@@ -3,15 +3,11 @@
 namespace App\Models;
 
 use App\Models\User;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\Hash;
-=======
-use Illuminate\Support\Carbon;
->>>>>>> c0afbca72cf456c1bf90fa3291ade101b36dbf93
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Profile extends Model
+class Details extends Model
 {
     use HasFactory;
 
@@ -19,13 +15,11 @@ class Profile extends Model
 
     public $timestamps = false;
 
-    // protected $casts = [
-    //     'birthday' => 'date',
-    // ];
-    protected $dates = ['birthday'];
+    protected $casts = [
+        'birthday' => 'date',
+    ];
 
-<<<<<<< HEAD
-    public function addUserProfile()
+    public function addUserDetails()
     {
         $user = new User;
         $user->username = 'eawilson';
@@ -33,7 +27,7 @@ class Profile extends Model
         $user->password = Hash::make('password');
         $user->save();
 
-        $details = new Profile;
+        $details = new Details;
         $details->firstname = "Alan";
         $details->lastname = "Wilson";
         $details->username = "eawilson";
@@ -41,20 +35,6 @@ class Profile extends Model
         $details->birthday = "1950-05-27";
         $user->details()->save($details);
 
-=======
-    public function getDateForEditingAttribute()
-    {
-        return $this->birthday->format('Y-m-d');
-    }
-
-    public function setDateForEditingAttribute($value)
-    {
-<<<<<<< HEAD
-        $this->birthday = Carbon::parse($value,"america/edmonton");
-=======
-        $this->birthday = Carbon::parse($value);
->>>>>>> c0afbca72cf456c1bf90fa3291ade101b36dbf93
->>>>>>> 3e30e82e42b4bda1209e5770d926a8daec96e533
     }
 
     public function user()

@@ -61,7 +61,7 @@
                         </x-input.group>
 
                         <x-input.group label="Date" for="date_for_editing" :error="$errors->first('editing.date_for_editing')">
-                            <x-input.date wire:model="editing.date_for_editing" id="date_for_editing" />
+                            <x-input.date wire:model.lazy="editing.date_for_editing" id="date_for_editing" />
                         </x-input.group>
 
                         <x-input.group label="Days" for="days" :error="$errors->first('editing.days')">
