@@ -1,0 +1,204 @@
+body {
+    background-attachment: fixed;
+    background-color: rgba(0, 255, 0, 0.1);
+    background-image: url("http://192.168.1.69/img/thesea-short.png");
+    background-position: 30% 30%;
+    box-sizing: border-box;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    line-height: 27px;
+    margin: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    tab-size: 4
+
+}
+#backsheet {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+#three-panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2vw 96vw 2vw;
+    grid-template-rows: 6vh 94vh;
+    grid-template-areas:
+      "header header header"
+      ". main ."
+    overflow-x:hidden;
+    overflow-y:hidden;
+  }
+
+  #two-panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: 5vw 90vw 5vw;
+    grid-template-rows: 20vh 80vh;
+    grid-template-areas:
+      "header header header"
+      ". main .";
+    /* background-position-x: 50%; */
+    /* background-position-y: 40%; */
+    overflow-x:hidden;
+    overflow-y:hidden;
+  }
+
+  #nav-bar1 {
+    grid-area: header;
+    height: 3rem;
+    border: 1px solid #95cdee;
+    border-radius: 0.5rem;
+    margin: 0.25rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    background-color:  rgb(229, 231, 235);
+    color: black;
+}
+
+#nav-bar-auth {
+    grid-area: header;
+    height: 5rem;
+    width: 100vw;
+    /* border: 1px solid #95cdee; */
+    border-radius: 0.5rem;
+    margin: 0.25rem;
+    margin-top: 2rem;
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+}
+#nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color:  rgb(229, 231, 235); */
+    color: black;
+}
+
+#nav-group1 {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0.5rem;
+    height: 3rem;
+    width: 100%;
+}
+
+#title1 {
+    white-space: nowrap;
+    display: none;
+}
+
+
+#nav-group1 > div > img {height:2rem;}
+
+#user1 {display: none;}
+
+#content1 {
+    grid-area: main;
+    /* border: 1px solid #95cdee; */
+    height: 86vh;
+    margin-top: 1.0rem;
+    border-radius: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    /* background-color:  rgba(229, 231, 235, 0.7); */
+    overflow-y:auto;
+}
+
+#content_auth {
+    grid-area: main;
+    /* border: 1px solid #95cdee; */
+    /* height: 60vh; */
+    margin-top: 3.0rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    /* background-color:  rgba(229, 231, 235, 0.7); */
+    overflow-y:hidden;
+}
+
+#footer1 {
+    grid-area: footer;
+    border-radius: 0.25rem;
+    margin: 0.25rem;
+    padding-left:5px;
+    border: 1px solid #95cdee;
+    background-color:  rgb(229, 231, 235);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: black;
+}
+
+#footer1:after { content:"\00a9 Alan 2022";}
+/* #nav-group1 > div {    border: 1px solid #95cdee    ;} */
+
+@media (min-width: 640px) {
+    #three-panel {
+        grid-template-columns: 15vw 3vw 64vw 3vw 15vw;
+        grid-template-areas:
+        "header header header header header"
+        ". . main . . "
+        }
+    #title1 {display: block;}
+    #nav-bar1 {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    #two-panel {
+        min-width: 640px;
+        grid-template-columns: 5vw 90vw 5vw;
+    }
+}
+@media (min-width: 1024px) {
+    #three-panel {
+        grid-template-columns: 25vw 2vw 50vw 3vw 25vw;
+      }
+      #user1 {display: block;}
+      #title1 {display: block;}
+      #nav-bar1 {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    #two-panel {
+        position: relative;
+        display: grid;
+        grid-template-columns: 30vw 40vw 30vw;
+      }
+    }
+@media (min-width: 1280px) {
+    #three-panel {
+        grid-template-columns: 15vw 3vw 64vw 3vw 15vw;
+    }
+    #user1 {display: block;}
+    #title1 {display: block;}
+    #nav-bar1 {
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+    }
+    #two-panel {
+        grid-template-columns: 35vw 30vw 35vw;
+    }
+}
+/*  my sttuff */
+.alan1 {
+    border: 1px solid green;
+}
+
+.alan {
+    border: 1px solid red;
+}
+
+.alan2 {
+    border: 1px solid blue;
+}
+
+.alan3 {
+    border: 1px solid yellow;
+}
