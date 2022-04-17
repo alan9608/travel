@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Details;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -40,39 +38,27 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime'
     ];
 
+        // src="9D76n8aWh5luwvpC7Ob7ptMMNv2fyXQqvN3K8TqJ.jpg"
     public function avatarUrl()
     {
-        $details = Details::firstOrCreate([
-            'user_id' => auth()->user()->id
-        ]);
-
-        return $details->portrait
-            ? Storage::disk('avatars')->url($details->portrait)
+        $details = auth()->user()->profile;
+        return $details->picture
+            ? Storage::disk('avatars')->url($details->picture)
             : 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
     }
 
-    public function getFirstnameAttribute()
-    {
-        return $this->details()->firstname;
-    }
-    public function getlastnameAttribute()
-    {
-        return $this->details()->lastname;
-    }
+    // public function getFirstnameAttribute()
+    // {
+    //     return $this->profile()->firstname;
+    // }
+    // public function getLastnameAttribute()
+    // {
+    //     return $this->profile()->lastname;
+    // }
 
-    public function getBirthdayForEditingAttribute()
+    public function profile()
     {
-        return $this->details()->birthday->format('Y-m-d');
-    }
-
-    public function setBirthdayForEditingAttribute($value)
-    {
-        $this->details()->birthday = Carbon::parse($value);
-    }
-
-    public function details()
-    {
-        return $this->hasOne(Details::class);
+        return $this->hasOne(Profile::class);
     }
 
 

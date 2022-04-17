@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        date_default_timezone_set('America/Edmonton');
         Component::macro('notify', function ($message) {
             $this->dispatchBrowserEvent('notify', $message);
         });

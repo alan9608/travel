@@ -12,7 +12,7 @@
 
                         <x-table>
                             <x-slot name="head">
-                                <x-table.heading>Decription</x-table.heading>
+                            <x-table.heading>Decription</x-table.heading>
                                 <x-table.heading sortable>Date</x-table.heading>
                                 <x-table.heading sortable>Days</x-table.heading>
                                 <x-table.heading>Type</x-table.heading>

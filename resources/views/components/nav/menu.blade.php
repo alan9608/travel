@@ -1,12 +1,12 @@
-<div x-data="{ open: false }" class="lg:pl-0 sm:pl-4"><!-- either words if big enough or hamburger if small -->
-
-    <div class="hidden sm:inline-block h-10 p-2 space-x-4 text-gray-600">
+<div x-data="{ open: false }" class="">
+    <!-- /home/alan/travel/resources/views/components/nav/menu.blade.php -->
+    <div class="hidden sm:block h-10 p-2 space-x-4 text-gray-600">
     <a href="/trips"><span class="text-lg font-semibold hover:text-white">Trips</span></a>
         <a href="/places"><span class="text-lg font-semibold hover:text-white">Places</span></a>
     </div>
 
-    <div class="inline-block sm:hidden">
-        <button @click="open = !open" x-cloak  type="button"
+    <div class="block sm:hidden">
+        <button x-show="open" @click="open = !open" x-cloak  type="button"
             class="text-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 ">
             <span class="sr-only">Open sidebar</span>
             <!-- Heroicon name: outline/menu-alt-2 -->
@@ -44,7 +44,5 @@
 
             </ul>
         </div>
-
     </div>
-
 </div>

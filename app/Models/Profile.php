@@ -15,9 +15,10 @@ class Profile extends Model
 
     public $timestamps = false;
 
-    protected $casts = [
-        'birthday' => 'date',
-    ];
+    // protected $casts = [
+    //     'birthday' => 'date',
+    // ];
+    protected $dates = ['birthday'];
 
     public function getDateForEditingAttribute()
     {
@@ -26,7 +27,7 @@ class Profile extends Model
 
     public function setDateForEditingAttribute($value)
     {
-        $this->birthday = Carbon::parse($value);
+        $this->birthday = Carbon::parse($value,"america/edmonton");
     }
 
     public function user()
